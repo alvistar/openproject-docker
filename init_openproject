@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd /home/app/openproject
+sudo -u app -H -E bundle exec rake generate_secret_token
+sudo -u app -H -E bundle exec rake db:migrate
+sudo -u app -H -E bundle exec rake db:seed
+sudo -u app -H -E bundle exec rake assets:precompile
