@@ -16,12 +16,12 @@ For creating the database use:
 
 After you can initialize the image (populate and seeding database, recompile assets):
 
-    OPENPROJECT_ID=$(docker run --link mysql:db alvistar/openproject-docker init_openproject)
-
-Next time you want to start from already built image:
-
-    docker commit --run='{"cmd":["/sbin/my_init"]}' $OPENPROJECT_ID alvistar/openproject
+    docker run --link mysql:db --name=openproject alvistar/openproject-docker init_openproject
 
 Ready to go!
 
-    docker run -d -p 80:80 --link mysql:db alvistar/openproject
+    docker run -d -t -p 80:80 --volumes-from openproject --link mysql:db alvistar/openproject-docker
+
+If you want to run with insecure key for ssh:
+
+    docker run -d -t -p 80:80 --volumes-from openproject --link mysql:db alvistar/openproject-docker /sbin/my_init --enable-insecure-key

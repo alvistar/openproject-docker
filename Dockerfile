@@ -11,7 +11,6 @@ RUN apt-get -y install libmagickwand-dev libmagickcore-dev libmagickcore4-extra 
 
 RUN cd /home/app && git clone https://github.com/opf/openproject.git
 
-
 ADD database.yml /home/app/openproject/config/database.yml
 
 RUN chown -R app:app /home/app/openproject
@@ -32,3 +31,5 @@ ADD init_openproject /usr/local/bin/init_openproject
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/sbin/my_init"]
+
+VOLUME /home/app/openproject
