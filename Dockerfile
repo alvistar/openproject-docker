@@ -32,4 +32,5 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/sbin/my_init"]
 
-VOLUME /home/app/openproject
+VOLUME /home/app/openproject/config
+VOLUME /home/app/openproject/files
