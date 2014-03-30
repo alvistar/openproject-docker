@@ -25,3 +25,7 @@ Ready to go!
 If you want to run with insecure key for ssh:
 
     docker run -d -t -p 80:80 --volumes-from openproject --link mysql:db alvistar/openproject-docker /sbin/my_init --enable-insecure-key
+
+For linking to LDAP server add:
+
+    docker run -d -t -p 80:80 --volumes-from openproject --dns 127.0.0.1 --link mysql:db --link ldap:ldap alvistar/openproject-docker /sbin/my_init --enable-insecure-key

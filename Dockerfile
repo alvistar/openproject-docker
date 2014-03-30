@@ -28,7 +28,13 @@ RUN rm -f /etc/service/nginx/down
 
 ADD init_openproject /usr/local/bin/init_openproject
 
+RUN apt-get -y install dnsmasq
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#DNSMASQ SERVICE
+RUN mkdir /etc/service/dnsmasq
+ADD dnsmasq.sh /etc/service/dnsmasq/run
 
 CMD ["/sbin/my_init"]
 
