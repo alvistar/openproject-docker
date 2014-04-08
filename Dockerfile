@@ -10,6 +10,7 @@ RUN apt-get -y install curl build-essential libxslt-dev libxml2-dev libmysql-rub
 RUN apt-get -y install libmagickwand-dev libmagickcore-dev libmagickcore4-extra libgraphviz-dev libgvc5
 
 RUN cd /home/app && git clone https://github.com/opf/openproject.git
+RUN cd /home/app/openproject && git checkout v3.0.1
 
 ADD database.yml /home/app/openproject/config/database.yml
 
@@ -38,5 +39,4 @@ ADD dnsmasq.sh /etc/service/dnsmasq/run
 
 CMD ["/sbin/my_init"]
 
-VOLUME /home/app/openproject/config
-VOLUME /home/app/openproject/files
+VOLUME /home/app/openproject
